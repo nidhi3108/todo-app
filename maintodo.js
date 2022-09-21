@@ -84,7 +84,7 @@ if(storedtodos!== null)
     todos=JSON.parse(storedtodos)
 }
 
-todos.forEach(function(value){
+todos.forEach(function(value){   //foreach
 
     var leftcontainer=document.createElement("div")
     var subheading1=document.createElement("div")
