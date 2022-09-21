@@ -21,15 +21,9 @@ function todo(){
     left.appendChild(subheading)
 
     input.addEventListener("keydown",eventhandler)
-    checkbutton.addEventListener("onclick",removehandler)
+ 
 }
 
-function removehandler(event){
-    var del=document.getElementsByClassName("inputcontainer")
-    leftcontainer.removeChild(del)
-   
-
-}
 
 function eventhandler(event){
     
@@ -42,39 +36,42 @@ function eventhandler(event){
     var subheading1=document.createElement("div")
     var taskheading=document.createElement("p")
     var subheading2=document.createElement("div")
-    var checkbutton=document.createElement("button")
+    var checkbox=document.createElement("button")    //checkbox done
+    var checkbutton=document.createElement("button")  //edit button
+    var crossbutton=document.createElement("button")   //del button
     checkbutton.setAttribute("id","check")
-    
-    var crossbutton=document.createElement("button")
     crossbutton.setAttribute("id","cross")
+    checkbox.setAttribute("id","done")
+    
+    checkbox.type="checkbox"
+    checkbutton.innerHTML="edit"
     crossbutton.innerHTML="delete"
     todos.push(value);
     localStorage.setItem("todos",JSON.stringify(todos))
 
     subheading1.appendChild(taskheading)
+    subheading2.appendChild(checkbox)
     subheading2.appendChild(checkbutton)
     subheading2.appendChild(crossbutton)
     leftcontainer.appendChild(subheading1)
     subheading1.setAttribute("id","heading1")
     subheading2.setAttribute("id","heading2")
     leftcontainer.appendChild(subheading2)
-    // leftcontainer.appendChild(crossbutton)
 
     leftcontainer.setAttribute("class","inputcontainer")
-    // leftcontainer.setAttribute=("id","inputcontainer")
-    // leftcontainer.class="inputcontainer"
-    
     taskheading.innerHTML=value;
-    checkbutton.innerHTML="edit"
-    
-    checkbutton.type="checkbox"
-    // crossbutton.type="fa fa times"
 
     var leftdiv=document.getElementById("left")
     leftdiv.appendChild(leftcontainer)
     textshow.value=""
     }
-
+    crossbutton.addEventListener("click",removehandler)
+}
+function removehandler(event){
+    var del=document.getElementById("left")
+    var remove =e.target.parentNode.parentNode.children[0].children[0].textContent;
+    del.removeChild(remove)
+   
 }
 todo();
  
@@ -90,33 +87,30 @@ todos.forEach(function(value){   //foreach
     var subheading1=document.createElement("div")
     var taskheading=document.createElement("p")
     var subheading2=document.createElement("div")
-    var checkbutton=document.createElement("button")
+    var checkbox=document.createElement("button")    //checkbox done
+    var checkbutton=document.createElement("button")  //edit button
+    var crossbutton=document.createElement("button")   //del button
     checkbutton.setAttribute("id","check")
-    
-    var crossbutton=document.createElement("button")
     crossbutton.setAttribute("id","cross")
+    checkbox.setAttribute("id","done")
+    
+    checkbox.type="checkbox"
+    checkbutton.innerHTML="edit"
     crossbutton.innerHTML="delete"
+    
 
     subheading1.appendChild(taskheading)
+    subheading2.appendChild(checkbox)
     subheading2.appendChild(checkbutton)
     subheading2.appendChild(crossbutton)
     leftcontainer.appendChild(subheading1)
     subheading1.setAttribute("id","heading1")
     subheading2.setAttribute("id","heading2")
     leftcontainer.appendChild(subheading2)
-    // leftcontainer.appendChild(crossbutton)
 
     leftcontainer.setAttribute("class","inputcontainer")
-    // leftcontainer.setAttribute=("id","inputcontainer")
-    // leftcontainer.class="inputcontainer"
-    
     taskheading.innerHTML=value;
-    checkbutton.innerHTML="edit"
-    
-    checkbutton.type="checkbox"
-    // crossbutton.type="fa fa times"
 
     var leftdiv=document.getElementById("left")
     leftdiv.appendChild(leftcontainer)
-
 })
