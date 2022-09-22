@@ -72,11 +72,13 @@ function removehandler(e){
    console.log(e.target);
    var remove =e.target.parentNode.parentNode;
    remove.remove();
-   t=[];
+   var t=[];
    var a=localStorage.getItem("todos")
    console.log(a);
+   
    var b=e.target.parentNode.parentNode.children[0].children[0].innerHTML;
-   var t=todos.filter((a)=>{
+   console.log(b)
+    t=todos.filter((a)=>{
     if(a!=b){
         return a;
     }
