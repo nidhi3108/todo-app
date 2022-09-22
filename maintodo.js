@@ -64,14 +64,24 @@ function eventhandler(event){
     var leftdiv=document.getElementById("left")
     leftdiv.appendChild(leftcontainer)
     textshow.value=""
-    }
     crossbutton.addEventListener("click",removehandler)
+    }
 }
-function removehandler(event){
-    var del=document.getElementById("left")
-    var remove =e.target.parentNode.parentNode.children[0].children[0].textContent;
-    del.removeChild(remove)
-   
+
+function removehandler(e){
+   console.log(e.target);
+   var remove =e.target.parentNode.parentNode;
+   remove.remove();
+   t=[];
+   var a=localStorage.getItem("todos")
+   console.log(a);
+   var b=e.target.parentNode.parentNode.children[0].children[0].innerHTML;
+   var t=todos.filter((a)=>{
+    if(a!=b){
+        return a;
+    }
+})
+   localStorage.setItem("todos", JSON.stringify(t));
 }
 todo();
  
@@ -113,4 +123,5 @@ todos.forEach(function(value){   //foreach
 
     var leftdiv=document.getElementById("left")
     leftdiv.appendChild(leftcontainer)
+    crossbutton.addEventListener("click",removehandler)
 })
